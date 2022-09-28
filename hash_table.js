@@ -10,8 +10,8 @@ let user = {
 }
 
 const items = new Map()
-items.set(1, 'Primeiro')
+items.set(Math.random *0.3652, { title: 'teste', year: 1990 })
 
 items.forEach(element => {
-    console.log(element)
+    console.log(element.title)
 })
