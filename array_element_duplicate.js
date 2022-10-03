@@ -1,7 +1,7 @@
 const arr1 = ['a', 'a'];
 const arr2 = ['c', 'b'];
 console.log(arr1.indexOf('a'))
-console.log(arr1.lastIndexOf('a'))
+console.log(arr1.Of('a'))
 function containsDuplicates(array) {
     const result = array.some(element => {
         if (array.indexOf(element) !== array.lastIndexOf(element)) {
