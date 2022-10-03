@@ -1,7 +1,7 @@
 var points = function (ops) {
     var result = 0
     record = []
-    if(ops.length >=1 || ops.length <= 1000){
+    if(ops.length >=1 && ops.length <= 1000){
         for(var index = 0; index < ops.length; index++) {
             if(ops[index].toString().includes('+')){
                 record.push(parseInt(record[record.length-1]) + parseInt(record[record.length-2]))
