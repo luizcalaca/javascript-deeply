@@ -18,7 +18,7 @@ const verifySubString =
         }
     }
 
-    if((indexes.length > indexes2.length) || (indexes.length === indexes2.length)) {
+    if((indexes.length > indexes2.length)) {
         for (let index = 0; index < indexes2.length; index++) {
             if(indexes2.includes(indexes[index])){
                 return "YES"
@@ -35,4 +35,4 @@ const verifySubString =
     }
 }
 
-console.log(verifySubString("oooa", "dfga"))
+console.log(verifySubString("asdf", "o"))
