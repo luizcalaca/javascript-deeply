@@ -1,3 +1,4 @@
+
 class BinaryTree { //O(log n)
 
     constructor(value){
@@ -6,28 +7,73 @@ class BinaryTree { //O(log n)
         this.right = null
     }
 
-    static addAll(root) {
-        if(root == null) 
+    addAll(root) {
+        if (root === null)
             return 0
-        return (root.value + this.addAll(root.left) + this.addAll(root.right))
+            
+        let left = this.addAll(root.left)
+        let right = this.addAll(root.right)
+        
+        return root.value + left + right
     }
+
+    treeMax(root) {
+        if (root === null)
+            return 0
+            
+        let left = this.treeMax(root.left)
+        let right = this.treeMax(root.right)
+        
+        return Math.max(root.value, left, right)
+    }
+
+    treeHeight(root) {
+        if (root === null)
+            return 0
+            
+        let left = this.treeHeight(root.left)
+        let right = this.treeHeight(root.right)
+        
+        return Math.max(left, right) + 1
+    }
+
+    existsInTree(root, value) {
+        if (root === null)
+            return false
+        
+        if (root.value === value)
+            return true
+
+        let left = this.existsInTree(root.left, value)
+        let right = this.existsInTree(root.right, value)
+    
+        return left || right
+    }
+
+    reverseTree(root) {
+        if (root === null)
+            return
+
+        this.reverseTree(root.left)
+        this.reverseTree(root.right)
+
+        root.left = root.right
+        root.right = root.left
+
+        return root
+    }
+
 }
 
-let root = new BinaryTree(1);
-root.left = new BinaryTree(2);
-root.right = new BinaryTree(3);
-root.left.left = new BinaryTree(4);
-root.left.right = new BinaryTree(5);
-root.right.left = new BinaryTree(6);
-root.right.right = new BinaryTree(7);
-root.right.left.right = new BinaryTree(8);
+let root = new BinaryTree(1)
+root.left = new BinaryTree(3)
+root.right = new BinaryTree(4)
 
-let sum = BinaryTree.addAll(root);
-console.log(sum)
-//Level 0: 2^0 = 1
-//Level 1: 2^1 = 2
-//Level 2: 2^2 = 4
-//Level 3: 2^3 = 8
+root.left.left = new BinaryTree(2)
+root.left.right = new BinaryTree(2)
 
-//total of BinaryTrees = 2^h - 1 (h is the level's quantity)
-
+console.log(root.addAll(root))
+console.log(root.treeMax(root))
+console.log(root.treeHeight(root))
+console.log(root.existsInTree(root, 4))
+console.log(root.reverseTree(root))
